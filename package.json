@@ -1,7 +1,7 @@
 {
 	"name": "fivem-vscode",
-	"displayName": "fivem-vscode",
-	"description": "FiveM autoCompletion and signature help",
+	"displayName": "Fivem Natives",
+	"description": "FiveM Lua natives auto completion and signatures help",
 	"publisher": "fivem-vscode",
 	"repository": "https://github.com/wdesgardin/fivem-vscode",
 	"version": "0.0.1",
