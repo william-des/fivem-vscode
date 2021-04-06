@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { DocumentationResponse } from "../types/documentationResponse";
 import { NativeFunction } from "../types/nativeFunction";
-import { NativeParams } from "../types/nativeParams";
+import { NativeParam } from "../types/nativeParam";
 
 const documentationUrls = [
 	"https://runtime.fivem.net/doc/natives.json",
@@ -55,7 +55,7 @@ export class DocumentationService {
 		return rawDescription.substr(from, to - from);
 	}
 
-	private static parseNativeParams(params: NativeParams[]) {
+	private static parseNativeParams(params: NativeParam[]) {
 		return params.map((p) => ({ ...p, type: this.parseType(p.type) }));
 	}
 

@@ -1,8 +1,8 @@
-import { NativeParams } from "./nativeParams";
+import { NativeParam } from "./nativeParam";
 
 export interface NativeFunction {
 	name: string;
 	type: string;
 	description?: string;
-	params: NativeParams[];
+	params: NativeParam[];
 }

@@ -1,4 +1,4 @@
-export interface NativeParams {
+export interface NativeParam {
 	name: string;
 	type: string;
 	description?: string;
