@@ -4,7 +4,7 @@
 	"description": "FiveM Lua natives auto completion and signatures help",
 	"publisher": "fivem-vscode",
 	"repository": "https://github.com/wdesgardin/fivem-vscode",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.55.0"
 	},
