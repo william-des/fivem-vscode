@@ -40,12 +40,6 @@
 				],
 				"configuration": "./language-configuration.json"
 			}
-		],
-		"commands": [
-			{
-				"command": "fivem-vscode.helloWorld",
-				"title": "Hello World"
-			}
 		]
 	},
 	"scripts": {
