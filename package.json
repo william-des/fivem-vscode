@@ -3,8 +3,12 @@
 	"displayName": "Fivem Natives",
 	"description": "FiveM Lua natives auto completion and signatures help",
 	"publisher": "fivem-vscode",
-	"repository": "https://github.com/wdesgardin/fivem-vscode",
+	"repository": {
+		"url": "https://github.com/wdesgardin/fivem-vscode",
+		"type": "git"
+	},
 	"version": "0.1.0",
+	"icon": "images/icon.png",
 	"engines": {
 		"vscode": "^1.55.0"
 	},
