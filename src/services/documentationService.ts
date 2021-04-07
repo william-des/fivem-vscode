@@ -17,7 +17,7 @@ export class DocumentationService {
 		for (const natives of nativeArrays) {
 			allNatives.push(...natives);
 		}
-
+		
 		return allNatives;
 	}
 
@@ -33,6 +33,7 @@ export class DocumentationService {
 					native.name = this.parseNativeName(native.name);
 					native.description = native.description && this.parseNativeDescription(native.description);
 					native.params = this.parseNativeParams(native.params);
+					native.results = native.results && this.parseType(native.results);
 					natives.push(native);
 				}
 			}
@@ -65,8 +66,8 @@ export class DocumentationService {
 		switch (type) {
 			case "int":
 			case "float":
+			case "long":
 				return "number";
-			case "bool":
 			case "BOOL":
 				return "boolean";
 			case "char":
@@ -75,6 +76,8 @@ export class DocumentationService {
 				return "vector3";
 			case "Any":
 				return "any";
+			case "void":
+				return "";
 			default:
 				return type;
 		}

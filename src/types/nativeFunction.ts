@@ -5,4 +5,5 @@ export interface NativeFunction {
 	type: string;
 	description?: string;
 	params: NativeParam[];
+	results?: string;
 }

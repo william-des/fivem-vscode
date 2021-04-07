@@ -56,7 +56,7 @@ export class SignatureHelpProvider implements vscode.SignatureHelpProvider {
 
 	private addNative(native: NativeFunction) {
 		const params = native.params.map((p) => `${p.name}: ${p.type}`).join(", ");
-		const signature = new vscode.SignatureInformation(`${native.name}(${params})`);
+		const signature = new vscode.SignatureInformation(`${native.name}(${params})${native.results && `: ${native.results}`}`);
 
 		if (native.description) {
 			signature.documentation = new vscode.MarkdownString().appendMarkdown(native.description);

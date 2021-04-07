@@ -27,7 +27,9 @@ export class HoverProvider implements vscode.HoverProvider {
 		const markdown = [];
 
 		const params = native.params.map((p) => `${p.name}: ${p.type}`).join(", ");
-		const header = new vscode.MarkdownString().appendCodeblock(`${native.name}(${params})  \n`);
+		const header = new vscode.MarkdownString().appendCodeblock(
+			`${native.name}(${params})${native.results && `: ${native.results}`}`
+		);
 		markdown.push(header);
 
 		if (native.description) {
