@@ -7,7 +7,7 @@
 		"url": "https://github.com/wdesgardin/fivem-vscode",
 		"type": "git"
 	},
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"icon": "images/icon.png",
 	"engines": {
 		"vscode": "^1.55.0"
