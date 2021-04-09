@@ -3,6 +3,8 @@ import { NativeFunction } from "../types/nativeFunction";
 
 export class CompletionItemProvider implements vscode.CompletionItemProvider {
 	private natives: { name: string; completionItem: vscode.CompletionItem }[] = [];
+	private previousResult: { name: string; completionItem: vscode.CompletionItem }[] = [];
+	private previousText: string = "";
 
 	constructor(natives: NativeFunction[]) {
 		for (const native of natives) {
@@ -20,8 +22,13 @@ export class CompletionItemProvider implements vscode.CompletionItemProvider {
 		if (!wordRange) return;
 
 		const text = document.getText(wordRange).toLowerCase();
+		const natives = text.startsWith(this.previousText) ? this.previousResult : this.natives;
+		const result = natives.filter((n) => n.name.indexOf(text) != -1);
 
-		return this.natives.filter((n) => n.name.indexOf(text) != -1).map((n) => n.completionItem);
+		this.previousText = text;
+		this.previousResult = result;
+
+		return result.map((n) => n.completionItem);
 	}
 
 	private addNative(native: NativeFunction) {
