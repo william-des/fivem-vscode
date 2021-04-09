@@ -46,6 +46,11 @@ export class SignatureHelpProvider implements vscode.SignatureHelpProvider {
 		const signature = this.natives[methodName];
 		if (!signature) return;
 
+		if (signature.parameters.length > 0 && currentParameter >= signature.parameters.length) {
+			const lastParam = signature.parameters[signature.parameters.length - 1].label as string;
+			if (lastParam && lastParam.startsWith("...:")) currentParameter = signature.parameters.length - 1;
+		}
+
 		let signatureHelp = new vscode.SignatureHelp();
 		signatureHelp.activeParameter = currentParameter;
 		signatureHelp.activeSignature = 0;
@@ -56,7 +61,9 @@ export class SignatureHelpProvider implements vscode.SignatureHelpProvider {
 
 	private addNative(native: NativeFunction) {
 		const params = native.params.map((p) => `${p.name}: ${p.type}`).join(", ");
-		const signature = new vscode.SignatureInformation(`${native.name}(${params})${native.results && `: ${native.results}`}`);
+		const signature = new vscode.SignatureInformation(
+			`${native.name}(${params})${native.results && `: ${native.results}`}`
+		);
 
 		if (native.description) {
 			signature.documentation = new vscode.MarkdownString().appendMarkdown(native.description);
