@@ -2,12 +2,12 @@ import * as vscode from "vscode";
 import { CompletionItemProvider } from "./features/completionItemProvider";
 import { HoverProvider } from "./features/hoverProvider";
 import { SignatureHelpProvider } from "./features/signatureHelpProvider";
-import { DocumentationService } from "./services/documentationService";
+import { NativeService } from "./data/nativeService";
 
 export async function activate(context: vscode.ExtensionContext) {
 	console.log("Extension fivem-vscode loading");
 
-	const natives = await DocumentationService.getAllNatives();
+	const natives = await NativeService.getAllNatives();
 
 	let disposable = vscode.languages.registerHoverProvider("lua", new HoverProvider(natives));
 	context.subscriptions.push(disposable);

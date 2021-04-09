@@ -2,22 +2,22 @@ import fetch from "node-fetch";
 import { DocumentationResponse } from "../types/documentationResponse";
 import { NativeFunction } from "../types/nativeFunction";
 import { NativeParam } from "../types/nativeParam";
+import { specificFunctions } from "./specificFunctions";
 
 const documentationUrls = [
 	"https://runtime.fivem.net/doc/natives.json",
 	"https://runtime.fivem.net/doc/natives_cfx.json",
 ];
 
-export class DocumentationService {
+export class NativeService {
 	static async getAllNatives(): Promise<NativeFunction[]> {
+		const allNatives: NativeFunction[] = specificFunctions;
+		
 		const nativeArrays = await Promise.all(documentationUrls.map((url) => this.fetchNatives(url)));
-
-		const allNatives: NativeFunction[] = [];
-
 		for (const natives of nativeArrays) {
 			allNatives.push(...natives);
 		}
-		
+
 		return allNatives;
 	}
 
