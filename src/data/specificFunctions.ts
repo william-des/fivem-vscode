@@ -4,7 +4,7 @@ export const specificFunctions: NativeFunction[] = [
 	{
 		name: "CreateThread",
 		description:
-		"This allows you to create a new thread. All code inside the handler will be executed asynchronously",
+		"Creates a new scope for code execution, each thread is a coroutine which will be executed in a semi-consistent order.",
 		results: "",
 		params: [{ name: "threadFunction", type: "function", description: "The thread handler function" }],
 	},
@@ -46,7 +46,7 @@ export const specificFunctions: NativeFunction[] = [
 	},
 	{
 		name: "SetTimeout",
-		description: "This will execute the specified function after the specified amount of miliseconds",
+		description: "This will execute the specified function after the specified amount of milliseconds",
 		results: "",
 		params: [
 			{ name: "msec", type: "number", description: "The amount of milliseconds to pause the current thread" },
@@ -59,7 +59,7 @@ export const specificFunctions: NativeFunction[] = [
 			"Use this to listen for events, see the [events](https://docs.fivem.net/docs/scripting-manual/working-with-events/listening-for-events/) page for more info",
 		results: "table",
 		params: [
-			{ name: "msec", type: "number", description: "The name of the event you want to listen to" },
+			{ name: "eventName", type: "string", description: "The name of the event you want to listen to" },
 			{ name: "callback", type: "function", description: "The function to run when the event is called" },
 		],
 	},
@@ -73,9 +73,10 @@ export const specificFunctions: NativeFunction[] = [
 		name: "RegisterNetEvent",
 		results: "",
 		description:
-			"Marks the event safe for network use. Aka, allows you to trigger the eventName event on the client, from a server side script. Use AddEventHandler to listen for the event after registering it.",
+			"Marks the event safe for network use. Aka, allows you to trigger the eventName event on the client, from a server side script. Providing a callback would be the same as adding an event handler.",
 		params: [
 			{ name: "eventName", type: "string", description: "A string representing the event name to register" },
+			{ name: "callback", type: "function", description: "The function to run when the event is called" },
 		],
 	},
 	{
